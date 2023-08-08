@@ -9,8 +9,8 @@ base-config:
 # 不想要的节点 name, 支持正则表达式
 filter-proxy-name:
 #  - "名称 name"
-#  - "[港澳新]"
-  - "[马柬鲜色哈英波瑞葡卢俄乌土廷巴南印德泰菲]"
+  - "[港澳新]"
+  - "[马柬鲜色哈英波瑞葡卢俄乌土廷巴南印德泰菲尼]"
   - "直连"
   - "套餐"
 
@@ -219,6 +219,13 @@ proxy-groups:
       - ss1
       - ss2
   - name: '韩国'
+    type: select
+    proxies:
+      - http
+      - vmess
+      - ss1
+      - ss2
+  - name: '下载'
     type: select
     proxies:
       - http
