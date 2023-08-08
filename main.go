@@ -263,7 +263,7 @@ func parseRequestParams(r *http.Request) (map[string]interface{}, map[string]int
 		return nil, nil, true
 	}
 	configFileName := configFileNameArr[0]
-	configFile, readConfigFileErr := ioutil.ReadFile(absPath + "/config/" + configFileName + ".yaml")
+	configFile, readConfigFileErr := ioutil.ReadFile("./config/" + configFileName + ".yaml")
 	if readConfigFileErr != nil {
 		log.Printf("error: %v\n", readConfigFileErr)
 		log.Println("读入配置文件失败了，检查配置文件是否存在")

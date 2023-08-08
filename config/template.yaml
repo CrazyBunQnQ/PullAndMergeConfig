@@ -1,0 +1,208 @@
+# 基础规则源
+# 这个就是你要采用规则的源地址，会把代理填入这里面，然后把要覆盖的参数覆盖进去
+base-config:
+  #  - name: name
+  #    url: url
+  - name: CrazyBunQnQ
+    url: "https://raw.githubusercontent.com/CrazyBunQnQ/SS-Rule-Snippet/dev/LAZY_RULES/clash.yaml"
+
+# 过滤的节点 name
+filter-proxy-name:
+#  - "名称 name"
+
+# 过滤的节点 server
+filter-proxy-server:
+#  - "server"
+
+# 过滤的 proxy-providers
+filter-proxy-providers:
+#  - "server"
+
+# 过滤的 proxy-groups
+filter-proxy-groups:
+#  - "server"
+
+# 拉取代理源
+# 这个就是你的订阅地址，会从这个地址提取代理信息添加到上面的基础规则源里面
+
+pull-proxy-source:
+  #  按照下面的输入方式填写
+  #  - name: name
+  #    url: url
+  - name: 闪电
+    url: "https://update.cdn-sd.xyz/api/v1/client/subscribe?token=c57ea9414a9e803"
+  - name: 魔戒
+    url: "https://mojie.mx/api/v1/client/subscribe?token=7d3e8d95719649f"
+  - name: 羊圈
+    url: "https://mie-sub.pz.pe/subscribe/OOEPHV8?clash=ssr&trojan"
+
+
+# 下面的参数都会覆盖或合并到最终生成的配置文件里面去
+
+# HTTP 代理端口
+port: 7890
+
+# SOCKS5 代理端口
+socks-port: 7891
+
+# Transparent proxy server port for Linux and macOS
+# redir-port: 7892
+
+# HTTP(S) and SOCKS5 server on the same port
+# mixed-port: 7890
+
+# authentication of local SOCKS5/HTTP(S) server
+# authentication:
+#  - "user1:pass1"
+#  - "user2:pass2"
+
+# 允许局域网的连接（可用来共享代理）
+allow-lan: false
+# bind-address: "*"
+# 此功能仅在 allow-lan 设置为 true 时生效，支持三种参数：
+# "*"                           绑定所有的 IP 地址
+# 192.168.122.11                绑定一个的 IPv4 地址
+# "[aaaa::a8aa:ff:fe09:57d8]"   绑定一个 IPv6 地址
+
+# 规则模式：Rule（规则） / Global（全局代理）/ Direct（全局直连）
+mode: Rule
+
+# 设置日志输出级别 (默认级别：silent，即不输出任何内容，以避免因日志内容过大而导致程序内存溢出）。
+# 5 个级别：silent / info / warning / error / debug。级别越高日志输出量越大，越倾向于调试，若需要请自行开启。
+log-level: silent
+
+# When set to false, resolver won't translate hostnames to IPv6 addresses ipv6 的支持
+ipv6: true
+
+# clash 的 RESTful API
+external-controller: 127.0.0.1:9090
+
+# 您可以将静态网页资源（如 clash-dashboard）放置在一个目录中，clash 将会服务于 `${API}/ui`
+# 参数应填写配置目录的相对路径或绝对路径。
+# external-ui: folder
+
+# RESTful API 的口令 (可选)
+# secret: ""
+
+# 出站网卡接口
+# interface-name: en0
+
+# DNS 服务器和建立连接时的 静态 Hosts, 仅在 dns.enhanced-mode 模式为 redir-host 生效
+# 支持通配符域名 (例如: *.clash.dev, *.foo.*.example.com )
+# 不使用通配符的域名优先级高于使用通配符的域名 (例如: foo.example.com > *.example.com > .example.com )
+# 注意: +.foo.com 的效果等同于 .foo.com 和 foo.com
+hosts:
+# '*.clash.dev': 127.0.0.1
+# '.dev': 127.0.0.1
+# 'alpha.clash.dev': '::1'
+
+# DNS 服务器配置(可选；若不配置，程序内置的 DNS 服务会被关闭)
+# dns:
+#   enable: true
+#   listen: 0.0.0.0:53
+#   ipv6: true # 当此选项为 false 时, AAAA 请求将返回空
+
+#   # 以下填写的 DNS 服务器将会被用来解析 DNS 服务的域名
+#   # 仅填写 DNS 服务器的 IP 地址
+#   default-nameserver:
+#     - 1.2.4.8
+#     - 223.5.5.5
+#     - 114.114.114.114
+#     - 119.29.29.29
+#     - 8.8.8.8
+#   enhanced-mode: redir-host # 或 fake-ip
+#   fake-ip-range: 198.18.0.1/16 # Fake IP 地址池 (CIDR 形式)
+#   # use-hosts: true # 查询 hosts 并返回 IP 记录
+
+#   # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
+#   # fake-ip-filter:
+#   #   - '*.lan'
+#   #   - localhost.ptlogin2.qq.com
+
+#   # 支持 UDP / TCP / DoT / DoH 协议的 DNS 服务，可以指明具体的连接端口号。
+#   # 所有 DNS 请求将会直接发送到服务器，不经过任何代理。
+#   # Clash 会使用最先获得的解析记录回复 DNS 请求
+#   nameserver:
+#     - https://13800000000.rubyfish.cn/
+#     - https://dns.alidns.com/dns-query
+#     - https://doh.360.cn/dns-query
+
+#   # 当 fallback 参数被配置时, DNS 请求将同时发送至上方 nameserver 列表和下方 fallback 列表中配置的所有 DNS 服务器.
+#   # 当解析得到的 IP 地址的地理位置不是 CN 时，clash 将会选用 fallback 中 DNS 服务器的解析结果。
+#   # fallback:
+#   #  - https://dns.google/dns-query
+
+#   # 如果使用 nameserver 列表中的服务器解析的 IP 地址在下方列表中的子网中，则它们被认为是无效的，
+#   # Clash 会选用 fallback 列表中配置 DNS 服务器解析得到的结果。
+#   #
+#   # 当 fallback-filter.geoip 为 true 且 IP 地址的地理位置为 CN 时，
+#   # Clash 会选用 nameserver 列表中配置 DNS 服务器解析得到的结果。
+#   #
+#   # 当 fallback-filter.geoip 为 false, 如果解析结果在 fallback-filter.ipcidr 范围内，
+#   # Clash 会选用 nameserver 列表中配置 DNS 服务器解析得到的结果。
+#   #
+#   # 采取以上逻辑进行域名解析是为了对抗 DNS 投毒攻击。
+#   fallback-filter:
+#     geoip: true
+#     ipcidr:
+#     # - 240.0.0.0/4
+
+
+proxies:
+#  - name: "ss1"
+#    type: ss
+#    server: server
+#    port: 443
+#    cipher: chacha20-ietf-poly1305
+#    password: "password"
+#    # udp: true
+
+proxy-groups:
+#  # url-test 可以自动选择与指定 URL 测速后，延迟最短的服务器
+#  - name: "auto"
+#    type: url-test
+#    url: 'http://www.gstatic.com/generate_204'
+#    interval: 300
+
+#  # fallback 可以尽量按照用户书写的服务器顺序，在确保服务器可用的情况下，自动选择服务器
+#  - name: "fallback-auto"
+#    type: fallback
+#    url: 'http://www.gstatic.com/generate_204'
+#    interval: 300
+#
+#  # load-balance 可以使相同 eTLD 请求在同一条代理线路上
+#  - name: "load-balance"
+#    type: load-balance
+#    url: 'http://www.gstatic.com/generate_204'
+#    interval: 300
+
+# 服务器节点订阅
+proxy-providers:
+# name: # Provider 名称
+#   type: http # http 或 file
+#   path: # 文件路径
+#   url: # 只有当类型为 HTTP 时才可用，您不需要在本地空间中创建新文件。
+#   interval: # 自动更新间隔，仅在类型为 HTTP 时可用
+#   health-check: # 健康检查选项从此处开始
+#     enable:
+#     url:
+#     interval:
+
+#
+# 「url」参数填写订阅链接
+#
+# 订阅链接可以使用 API 进行转换，如：https://sub.dler.io/
+#
+# 1.模式选择「进阶模式」 2.填写订阅链接 3.勾选「输出为 Node List」 4.「生成订阅链接」
+#
+
+rule-providers:
+# name: # Provider 名称
+#   type: http # http 或 file
+#   behavior: classical # 或 ipcidr、domain
+#   path: # 文件路径
+#   url: # 只有当类型为 HTTP 时才可用，您不需要在本地空间中创建新文件。
+#   interval: # 自动更新间隔，仅在类型为 HTTP 时可用
+
+rules:
+#  - DOMAIN-SUFFIX,163.com,DIRECT
