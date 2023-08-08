@@ -8,6 +8,7 @@ import (
 	"gopkg.in/yaml.v2"
 	"net/url"
 	"parseAndCombineMyClashRules/my_set"
+	"regexp"
 	"strconv"
 	"strings"
 )
@@ -177,7 +178,8 @@ func filterUnAddProxyServer(proxyServerArr []map[interface{}]interface{}, filter
 filterStart:
 	for _, proxy := range proxyServerArr {
 		for _, filterName := range filterProxyName {
-			if filterName == proxy["name"] {
+			regexPattern, _ := regexp.Compile(filterName.(string))
+			if regexPattern.MatchString(proxy["name"].(string)) {
 				continue filterStart
 			}
 		}
