@@ -3,7 +3,9 @@
 base-config:
   #  - name: name
   #    url: url
-  - name: CrazyBunQnQ
+  - name: normal
+    url: "https://raw.githubusercontent.com/CrazyBunQnQ/SS-Rule-Snippet/baozi/LAZY_RULES/clash.yaml"
+  - name: advanced
     url: "https://raw.githubusercontent.com/CrazyBunQnQ/SS-Rule-Snippet/baozi/LAZY_RULES/advanced.yaml"
 
 # 不想要的节点 name, 支持正则表达式
@@ -572,6 +574,7 @@ rules:
   # - DOMAIN-KEYWORD,bili,BiliBili # 域名关键词 使用指定组的连接配置
   # - IP-CIDR,127.0.0.0/8,DIRECT # IP段 直连
   #  - DOMAIN-SUFFIX,163.com,DIRECT
+  - DOMAIN,cdn-lfs.huggingface.co,DIRECT # 这个老六明明可以直连，却用梯子一下子干掉我 1T 流量...
   - DOMAIN-SUFFIX,openai.com,美国节点
   - DOMAIN-SUFFIX,bing.com,美国节点
   - DOMAIN-SUFFIX,monica.im,代理

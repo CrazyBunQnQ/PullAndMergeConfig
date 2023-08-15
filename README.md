@@ -58,6 +58,7 @@
 例如: 
 
 配置文件使用 `config/template.yaml`
+
 目录结构如下:
 ![目录结构](dir.png)
 
