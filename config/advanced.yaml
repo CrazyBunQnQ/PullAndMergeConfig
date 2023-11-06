@@ -471,13 +471,13 @@ rule-providers:
   IPfake:
     type: http
     behavior: classical
-    url: https://raw.fastgit.org/lwd-temp/anti-ip-attribution/main/generated/rule-provider.yaml
+    url: https://cdn.jsdelivr.net/gh/lwd-temp/anti-ip-attribution/generated/rule-provider.yaml
     path: "./rule_provider/IPfake.yaml"
     interval: 259200
   BiliBili:
     type: http
     behavior: classical
-    url: https://raw.fastgit.org/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.yaml
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script/rule/Clash/BiliBili/BiliBili.yaml
     path: "./rule_provider/bilibili.yaml"
     interval: 259200
   Disney:
@@ -513,7 +513,7 @@ rule-providers:
   Emby:
     type: http
     behavior: classical
-    url: https://raw.fastgit.org/justdoiting/emby-rules/main/Emby.yaml
+    url: https://cdn.jsdelivr.net/gh/justdoiting/emby-rules/Emby.yaml
     path: "./rule_provider/Emby.yaml"
     interval: 259200
   Game:
@@ -531,7 +531,7 @@ rule-providers:
   Advertising:
     type: http
     behavior: classical
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdvertisingLite/AdvertisingLite_Classical.yaml
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script/rule/Clash/AdvertisingLite/AdvertisingLite_Classical.yaml
     path: "./rule_provider/Advertising.yaml"
     interval: 259200
   Download:
@@ -549,13 +549,13 @@ rule-providers:
   ChinaMax:
     type: http
     behavior: classical
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMaxNoIP/ChinaMaxNoIP_Classical.yaml
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script/rule/Clash/ChinaMaxNoIP/ChinaMaxNoIP_Classical.yaml
     path: "./rule_provider/ChinaMax.yaml"
     interval: 259200
   Global:
     type: http
     behavior: classical
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Global/Global_Classical.yaml
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script/rule/Clash/Global/Global_Classical.yaml
     path: "./rule_provider/Global.yaml"
     interval: 259200
   Lan:
