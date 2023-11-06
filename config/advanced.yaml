@@ -573,15 +573,33 @@ rules:
   # - RULE-SET,BiliBili,BiliBili # 使用规则集
   # - DOMAIN-KEYWORD,bili,BiliBili # 域名关键词 使用指定组的连接配置
   # - IP-CIDR,127.0.0.0/8,DIRECT # IP段 直连
+  - IP-CIDR,89.168.65.165/32,下载平台
+  - IP-CIDR,195.154.184.151/32,下载平台
   #  - DOMAIN-SUFFIX,163.com,DIRECT
   - DOMAIN,cdn-lfs.huggingface.co,DIRECT # 这个老六明明可以直连，却用梯子一下子干掉我 1T 流量...
+  - DOMAIN,s.bingparachute.com,美国节点
+  - DOMAIN,jcenter.bintray.com,DIRECT
+  - DOMAIN-SUFFIX,t-msedge.net,DIRECT
   - DOMAIN-SUFFIX,openai.com,美国节点
   - DOMAIN-SUFFIX,bing.com,美国节点
   - DOMAIN-SUFFIX,monica.im,代理
+  - DOMAIN-SUFFIX,zhihu.com,DIRECT
+  - DOMAIN-SUFFIX,ubits.club,下载平台
+  - DOMAIN-SUFFIX,cloudfront.net,DIRECT
+  - DOMAIN-SUFFIX,gradle.org,DIRECT
+  - DOMAIN-SUFFIX,icloud.com,DIRECT
+  - DOMAIN-SUFFIX,speedtest.net,DIRECT
+  - DOMAIN-SUFFIX,intercom.io,美国节点
+  - DOMAIN-SUFFIX,fakeopen.com,美国节点
+  - DOMAIN-SUFFIX,kemono.party,代理
+  - DOMAIN-SUFFIX,iwara.tv,代理
+  - DOMAIN-SUFFIX,rule34video.com,代理
+  - DOMAIN-SUFFIX,douban.com,DIRECT
 
   - DOMAIN-SUFFIX,gjfzpt.cn,REJECT
   - DOMAIN-KEYWORD,gmail,代理
   - DOMAIN-KEYWORD,google,代理
+  - DOMAIN-SUFFIX,openai,美国节点
   - DOMAIN-SUFFIX,1e100.net,代理
   - DOMAIN-SUFFIX,2mdn.net,代理
   - DOMAIN-SUFFIX,app-measurement.net,代理
