@@ -132,6 +132,54 @@ func parseBase64ProxyArr(base64ProxyStr []byte) ([]map[interface{}]interface{}, 
 				proxyMap["ws-headers"] = proxyWsHeaders
 				proxyArr = append(proxyArr, proxyMap)
 			}
+		} else if strings.HasPrefix(proxyStr, "vless://") {
+			urlParseInfo, urlParseErr := url.Parse(proxyStr)
+			if urlParseErr == nil {
+				proxyMap := make(map[interface{}]interface{})
+				proxyMap["name"] = urlParseInfo.Fragment
+				proxyMap["type"] = "vless"
+				proxyMap["server"] = urlParseInfo.Hostname()
+				proxyMap["port"] = urlParseInfo.Port()
+				proxyMap["uuid"] = urlParseInfo.User.String()
+				proxyMap["udp"] = true
+				if sni, ok := urlParseInfo.Query()["sni"]; ok {
+					proxyMap["sni"] = sni[0]
+				}
+
+				if security, ok := urlParseInfo.Query()["security"]; ok {
+					securityStr := security[0]
+					proxyMap["tls"] = securityStr == "tls"
+				}
+				if fp, ok := urlParseInfo.Query()["fp"]; ok {
+					proxyMap["client-fingerprint"] = fp[0]
+				}
+				if flow, ok := urlParseInfo.Query()["flow"]; ok {
+					proxyMap["flow"] = flow[0]
+				}
+				if typestr, ok := urlParseInfo.Query()["type"]; ok {
+					proxyMap["network"] = typestr[0]
+				}
+				//path=%2Fyfjc%2Fkus1
+				if proxyMap["network"] == "ws" {
+					wsMap := make(map[interface{}]interface{})
+					if patharr, ok := urlParseInfo.Query()["path"]; ok {
+						pathstr := patharr[0]
+						wsMap["path"] = pathstr
+						if hostarr, ok := urlParseInfo.Query()["host"]; ok {
+							hoststr := hostarr[0]
+							headerMap := make(map[interface{}]interface{})
+							headerMap["host"] = hoststr
+							wsMap["headers"] = headerMap
+						}
+					}
+					proxyMap["ws-opts"] = wsMap
+				}
+				proxyMap["tfo"] = false
+				proxyMap["skip-cert-verify"] = false
+
+				proxyArr = append(proxyArr, proxyMap)
+			}
+
 		} else if strings.HasPrefix(proxyStr, "trojan://") {
 			urlParseInfo, urlParseErr := url.Parse(proxyStr)
 			if urlParseErr == nil {
