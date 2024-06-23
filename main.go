@@ -42,16 +42,22 @@ func main() {
 	}
 
 	// 获取参数
+	port := "6789"
 	inputArgs := os.Args
-	if len(inputArgs) < 2 {
+	if len(inputArgs) >= 2 {
 		fmt.Println("请输入参数")
-		return
+		port = inputArgs[1]
 	}
 
-	port := inputArgs[1]
 	fmt.Println("服务启动，端口：" + port)
 	http.HandleFunc("/parse", parseRule)
-	http.ListenAndServe("0.0.0.0:"+port, nil)
+	fmt.Println("parse 服务启动")
+	err := http.ListenAndServe("0.0.0.0:"+port, nil)
+	if err != nil {
+		fmt.Println("服务启动失败:" + err.Error())
+		return
+	}
+	fmt.Println("启动成功: 0.0.0.0:" + port)
 }
 
 func parseRule(w http.ResponseWriter, r *http.Request) {
@@ -197,6 +203,7 @@ func getProxies(userConfigMap map[string]interface{}, r *http.Request) ([]map[in
 					httpRequestErr.Error(),
 				)
 			}
+			fmt.Print("获取到 " + proxySourceMap["name"].(string) + " 的订阅地址: " + proxySourceMap["url"].(string))
 			filterProxyName := userConfigMap["filter-proxy-name"]
 			var filterProxyNameArr []interface{}
 			if filterProxyName != nil {
@@ -332,8 +339,7 @@ func getConfigFieldMergeValueArr(fieldName string, userConfigMap map[string]inte
 	var valueSlice []interface{}
 	if userConfigMap[fieldName] != nil {
 		valueSlice = append(valueSlice, userConfigMap[fieldName].([]interface{})...)
-	}
-	if baseRuleConfigMap[fieldName] != nil {
+	} else if baseRuleConfigMap[fieldName] != nil {
 		valueSlice = append(valueSlice, baseRuleConfigMap[fieldName].([]interface{})...)
 	}
 	return valueSlice
