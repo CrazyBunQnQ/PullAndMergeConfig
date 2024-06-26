@@ -203,7 +203,7 @@ func getProxies(userConfigMap map[string]interface{}, r *http.Request) ([]map[in
 					httpRequestErr.Error(),
 				)
 			}
-			fmt.Print("获取到 " + proxySourceMap["name"].(string) + " 的订阅地址: " + proxySourceMap["url"].(string))
+			fmt.Println("获取到 " + proxySourceMap["name"].(string) + " 的订阅地址: " + proxySourceMap["url"].(string))
 			filterProxyName := userConfigMap["filter-proxy-name"]
 			var filterProxyNameArr []interface{}
 			if filterProxyName != nil {
@@ -391,7 +391,11 @@ filterStart:
 		}
 
 		if proxyGroupMap["use"] == nil {
-			proxyGroupMap["proxies"] = proxyNameArr
+			if proxyGroupMap["proxies"] == nil {
+				proxyGroupMap["proxies"] = proxyNameArr
+			} else {
+				proxyGroupMap["proxies"] = append(proxyGroupMap["proxies"].([]interface{}), proxyNameArr...)
+			}
 		}
 
 		outputProxyGroupMap = append(outputProxyGroupMap, proxyGroupMap)

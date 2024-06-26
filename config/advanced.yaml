@@ -576,6 +576,7 @@ rules:
   - IP-CIDR,89.168.65.165/32,下载平台
   - IP-CIDR,195.154.184.151/32,下载平台
   #  - DOMAIN-SUFFIX,163.com,DIRECT
+  - DOMAIN-SUFFIX,huggingface.co,美国节点
   - DOMAIN,cdn-lfs.huggingface.co,DIRECT # 这个老六明明可以直连，却用梯子一下子干掉我 1T 流量...
   - DOMAIN,s.bingparachute.com,美国节点
   - DOMAIN,jcenter.bintray.com,DIRECT
