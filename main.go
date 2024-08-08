@@ -132,7 +132,18 @@ func outPutClash(w http.ResponseWriter, userConfigMap map[string]interface{}, ba
 		}
 	}
 	// 构造 proxy
-	outputConfig.Proxies = proxyArr
+	userProxies := userConfigMap["proxies"]
+	var userProxyArr []interface{}
+	var outputUserProxiesMap []map[interface{}]interface{}
+	if userProxies != nil {
+		for _, proxy := range userProxies.([]interface{}) {
+			proxiesMap := proxy.(map[interface{}]interface{})
+			outputUserProxiesMap = append(outputUserProxiesMap, proxiesMap)
+		}
+		fmt.Println(userProxyArr)
+	}
+	outputUserProxiesMap = append(outputUserProxiesMap, proxyArr...)
+	outputConfig.Proxies = outputUserProxiesMap
 	// 构造 proxyGroup
 	filterProxyGroup := userConfigMap["filter-proxy-groups"]
 	var filterProxyGroupArr []interface{}
