@@ -213,6 +213,13 @@ func getProxies(userConfigMap map[string]interface{}, r *http.Request) ([]map[in
 					proxySourceMap["url"].(string),
 					httpRequestErr.Error(),
 				)
+				fmt.Println(
+					"请求url: %s，请求IP: %s, 订阅地址: %s, 报错内容：%v\n，通过订阅地址获取内容失败",
+					r.URL,
+					utils.GetRequestIp(r),
+					proxySourceMap["url"].(string),
+					httpRequestErr.Error(),
+				)
 			}
 			fmt.Println("获取到 " + proxySourceMap["name"].(string) + " 的订阅地址: " + proxySourceMap["url"].(string))
 			filterProxyName := userConfigMap["filter-proxy-name"]
